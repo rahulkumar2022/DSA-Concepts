@@ -1,0 +1,9 @@
+==============================Stream Operations====================
+
+1. flatMap(List::stream)
+2. filter(s->s.startsWith("s"))
+3. map(String::toUpperCase)
+4. distinct() -> remove duplicate items
+5. sorted() -> sort in natural sorting order
+6. peek()
+7. collect(Collectors.toList()) -> Collect finally into a list 

@@ -7,3 +7,10 @@
 5. sorted() -> sort in natural sorting order
 6. peek()
 7. collect(Collectors.toList()) -> Collect finally into a list 
+
+8. forEach()
+9. reduce
+10. count()
+11. findFirst()
+12. allMatch(s->s.startsWith("T"))
+13. anyMatch(s->s.startsWith("T))

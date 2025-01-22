@@ -20,6 +20,8 @@ public class Bfs {
         adj.get(3).add(1);
         ArrayList<Integer> bfs = bfsOfGraph(5, adj);
         System.out.println(bfs);
+        ArrayList<Integer> dfsList = Dfs.dfsOfGraph(5, adj);
+        System.err.println(dfsList);
     }
     private static ArrayList<Integer> bfsOfGraph(int V,ArrayList<ArrayList<Integer>> adj){
         ArrayList<Integer> bfs = new ArrayList<>();

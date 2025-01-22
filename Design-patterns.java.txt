@@ -1,0 +1,145 @@
+----------------------
+// Single Ton pattern
+public class MainThread{
+	public static MainThread instance;
+	private MainThread(){
+		
+	}
+	public static MainThread getInstance(){
+		if(instance==null){
+			synchronized(MainThread.class){
+				if(instance==null){
+					instance = new MainThread();
+				}
+			}
+		}
+		return instance;
+	}
+}
+-----------------------------------
+// Factory Design Pattern
+public abstract class OperatingSystem{
+	private String version;
+	private String architecture;
+	
+	public String getVersion(){
+		return version;
+	}
+	
+	public void setVersion(String version){
+		this.version = version;
+	}
+	
+	public String getArchitecture(){
+		return architecture;
+	}
+	
+	public void setArchitecture(String architecture){
+		this.architecture = architecture;
+	}
+	
+	public OperatingSystem(String version,String architecture){
+		this.version = version;
+		this.architecture = architecture;
+	}
+	
+	public abstract void changeDirectory(String dir);
+	public abstract void removeDir(String dir);
+}
+public class LinuxOperatingSystem extends OperatingSystem{
+	public LinuxOperatingSystem(String version,String architecture){
+		super(version,architecture);
+	}
+	@Override
+	public void changeDirectory(String dir){
+		// My Linux implementation
+	}
+	@Override
+	public void removeDir(String dir){
+		// My Linux implemntation
+	}
+}
+public class WindowOperaingSystem extends OperatingSystem{
+	public WindowOPeratingSystem(String version,String architecture){
+		super(version,architecture);
+	}
+	@Override
+	public void changeDirectory(String dir){
+		// Windows implemntation
+	}
+	@Override
+	public void removeDir(String dir){
+		// Window implementation
+	}
+}
+public OperatingSystemFactory{
+	private OperatingSystem(){
+		
+	}
+	public static OpeartingSystem getInstance(String version,String architecture,String os){
+		switch(os){
+			case "WINDOWS" : return new WindowsOperatingSystem(version,architecture);
+			case "LINUX" : return new LinuxOperatingSystem(version,architecture);
+			default : throw new IllegalArgumentExtection("Not a valid OS");
+		}
+	}
+}
+----------------------------------
+// Abstract Factory Design Pattern
+public interface UIFactory{
+	Button createButton();
+	CheckBoc createCheckBox();
+}
+public interface Button{
+	void paint();
+}
+public interface CheckBox{
+	void paint();
+}
+public class WindowButton implements Button{
+	void paint(){
+		// Windows logic
+	}
+}
+public class MacButton implements Button{
+	void paint(){
+		// Mac implementation
+	}
+}
+//Similarly can implement for checkbox
+public class WindowsUIFactory implements UIFactory{
+	@Override
+	public Button createButton(){
+		return new WindowButton();
+	}
+	@Override
+	public Checkbox createCheckBox(){
+		return new WindowCheckBox();
+	}
+}
+public class MacUIFactory implements UIFactory{
+	@Override
+	public Button createButton(){
+		return new MacButton();
+	}
+	@Override
+	public Checkbox createCheckBox(){
+		return new MacCheckBox();
+	}
+}
+public class Application{
+	private Button button;
+	private Checkbox checkBox;
+	public Application(UIFactory factory){
+		this.button = factory.createButton();
+		this.checkbox = factory.createCheckBox();
+	}
+	public void paint(){
+		this.button.paint();
+		this.checkBox.paint();
+	}
+}
+Application application = new Application(new WindowUIFactory());
+application.paint();
+----------------------------------------
+// 

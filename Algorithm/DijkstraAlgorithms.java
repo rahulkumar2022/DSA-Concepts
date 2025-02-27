@@ -12,7 +12,7 @@ public class DijkstraAlgorithms {
         dist[s] = 0;
         pq.offer(new int[]{s,0});
 
-        while(pq.size()>0){
+        while(!pq.isEmpty()){
             int[] arr = pq.poll();
             int dis = arr[1];
             int node = arr[0];
